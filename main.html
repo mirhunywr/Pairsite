@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="" type="image/x-icon">
+  <style>
+    body {
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+    }
+
+    {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "url": "https://railway.app",
+            "logo": "https://files.catbox.moe/hg5hj6.jpg"
+    }
+
+    .button-container {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h3 {
+      margin-top: -40px;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+    }
+
+    .button {
+      width: 140px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0px 15px;
+      background-color: red;
+      border-radius: 10px;
+      border: none;
+      color: white;
+      position: relative;
+      cursor: pointer;
+      font-weight: 900;
+      transition-duration: .2s;
+      background: linear-gradient(0deg, #000, #272727);
+      text-decoration: none;
+    }
+
+  
+    footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #222; /* Darker gray footer background */
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    
+  }
+    .button:before, .button:after {
+      content: '';
+      position: absolute;
+      left: -2px;
+      top: -2px;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #48ff00, #15ff00, #000000,#000000, #ff0000);
+      background-size: 400%;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      z-index: -1;
+      animation: steam 10s linear infinite;
+    }
+
+    @keyframes steam {
+      0% {
+        background-position: 0 0;
+      }
+
+      50% {
+        background-position: 400% 0;
+      }
+
+      100% {
+        background-position: 0 0;
+      }
+    }
+
+    .button:after {
+      filter: blur(50px);
+    }
+
+    .button span {
+      z-index: 1;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <h3> 💛 WELCOME TO ANAYAT-AI PAIR SITE 💙</h3>
+    <br>
+    <h3> 💙MMULTI DEVICE BEST WHATSAPP BOT 💛</h3>
+    <br>
+    <h3> 💚 ANAYAT-AI SESSION SECTION 💚</h3>
+    <div></div>
+    <a href="/qr" class="button" target="_blank"> <span>QR-CODE</span> </a> <br>
+    <a href="/pair" class="button" target="_blank"> <span>PAIRING-CODE</span> </a> <br>
+    <a href="https://github.com/ANAYAT-AI/ANAYAT-AI" class="button" target="_blank"> <span>FORK BOT</span> </a> <br>
+    <a href="https://whatsapp.com/channel/0029VbAm8LqL2ATpxklIct2g" class="button" target="_blank"> <span>SUPPORT CHANNEL</span> </a> <br>
+    <a href="https://youtube.com/@anayatsarkar1?si=RuVPV5q9-IZIUQRx" class="button" target="_blank"> <span>SUBSCRIBE YT-CHANNEL</span> </a> <br>
+
+    <p>🌐 IF YOU HAVE ANY ERROR ANAYAT-AI TELL ME 🌐</p>
+
+    <a href="https://wa.me/+923452401207?text=*ASLAM_U_ALIKUM_HAVE_ERROR_ANAYAT-AI 🌸*" class="button" target="_blank"> <span>ERROR</span> </a> <br>
+
+    <footer>
+     © KASHMAIRI : POWERD BY ANAYAT AI ❤️ &copy; <span id="currentYear"></span>
+    </footer>
+  
+</body>
+</html>
