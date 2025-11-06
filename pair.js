@@ -1,4 +1,3 @@
-
 const { makeid } = require('./gen-id');
 const express = require('express');
 const fs = require('fs');
@@ -14,12 +13,14 @@ function removeFile(FilePath) {
 router.get('/', async (req, res) => {
     const id = makeid();
     let num = req.query.number;
+    
+    // Path ko theek kiya gaya hai
+    const sessionPath = './temp/' + id;
 
-    async function GIFTED_MD_PAIR_CODE() {
-        // Galti yahan thi (./temp/' + id)
-        const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
+    async function QADEER_AI_PAIR_CODE() {
+        const { state, saveCreds } = await useMultiFileAuthState(sessionPath);
         try {
-            var items = ["Safari"];
+            var items = ["Safari", "Firefox", "Chrome"];
             function selectRandomItem(array) {
                 var randomIndex = Math.floor(Math.random() * array.length);
                 return array[randomIndex];
@@ -53,50 +54,52 @@ router.get('/', async (req, res) => {
                 
                 if (connection === "open") {
                     await delay(5000);
-                    // Galti yahan bhi thi ('/temp/' + id)
-                    let rf = __dirname + `/temp/${id}/creds.json`;
+                    // File path ko theek kiya gaya hai
+                    let rf = sessionPath + '/creds.json';
 
                     try {
                         // Read the creds.json file
                         const sessionData = fs.readFileSync(rf, 'utf-8');
                         // Encode the session data to Base64
                         const base64Encoded = Buffer.from(sessionData).toString('base64');
-                        // Add the prefix
+                        
+                        // [FIXED] Session prefix ko 'QADEER-AI~' kar dia gaya hai
                         const prefixedSession = "QADEER-AI~" + base64Encoded;
                         
                         // Send the prefixed Base64 session string to the user
-                        let message = `*✅ APKA BASE64 SESSION ID TAYAR HAI ✅*\n\nNeechay diye gaye code ko copy karke apne bot ke SESSION_ID mein paste kar dein.\n\n*Developer: ANAYAT-AI*`;
+                        let message = `*✅ AAPKA BASE64 SESSION ID TAYAR HAI ✅*\n\nNeechay diye gaye code ko copy karke apne bot ke SESSION_ID mein paste kar dein.\n\n*Bot: QADEER-AI*`;
                         await sock.sendMessage(sock.user.id, { text: message });
                         await sock.sendMessage(sock.user.id, { text: prefixedSession });
 
                         let desc = `*┏━━━━━━━━━━━━━━*
-*┃ANAYAT-AI SESSION IS*
+*┃QADEER-AI SESSION IS*
 *┃SUCCESSFULLY*
 *┃CONNECTED ✅🔥*
 *┗━━━━━━━━━━━━━━━*
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-*❶ || Creator = *ANAYAT-AI*
+*❶ || Creator = *Qadeer Brahvi*
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-*❷ || https://whatsapp.com/channel/0029VbAm8LqL2ATpxklIct2g
+*❷ || https://whatsapp.com/channel/0029Vadezmw41iQEO8kHTo2J
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-*❸ || Owner =* https://wa.me/message/JSIIRVLJDI7QD1
+*❸ || Owner =* https://wa.me/923300005253
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-*❹ || Repo =* https://github.com/ANAYAT-AI/ANAYAT-AI
+*❹ || Repo =* https://github.com/QadeerXTech/QADEER-AI
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-*💙ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴀɴᴀʏᴀᴛ-ᴀɪ💛*`; 
+*💙 ᴄʀᴇᴀᴛᴇᴅ ʙʏ ǫᴀᴅᴇᴇʀ ʙʀᴀʜᴠɪ 💛*`; 
                         await sock.sendMessage(sock.user.id, {
                             text: desc,
                             contextInfo: {
                                 externalAdReply: {
-                                    title: "ANAYAT-AI👨🏻‍💻",
-                                    thumbnailUrl: "https://files.catbox.moe/v19yjs.jpg",
-                                    sourceUrl: "https://whatsapp.com/channel/0029VbAm8LqL2ATpxklIct2g",
+                                    title: "QADEER-AI 👨🏻‍💻",
+                                    thumbnailUrl: "https://files.catbox.moe/cvn0l6.jpg", // Qadeer-AI image
+                                    sourceUrl: "https://whatsapp.com/channel/0029Vadezmw41iQEO8kHTo2J",
                                     mediaType: 1,
                                     renderLargerThumbnail: true
                                 }  
                             }
                         });
-                        await sock.newsletterFollow("120363420933039839@newsletter");
+                        // Follow channel
+                        await sock.newsletterFollow("120363418906972955@newsletter");
                         
                     } catch (e) {
                         console.error("Session banane mein galti hui:", e);
@@ -105,26 +108,27 @@ router.get('/', async (req, res) => {
 
                     await delay(1000);
                     await sock.ws.close();
-                    // Galti yahan bhi thi ('./temp/' + id)
-                    await removeFile('./temp/' + id);
+                    
+                    // Temp folder ko remove karein
+                    await removeFile(sessionPath);
                     console.log(`👤 ${sock.user.id} 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 ✅ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁𝗶נג 𝗽𝗿𝗼𝗰𝗲𝘀𝘀...`);
                     await delay(10);
-                    process.exit();
+                    process.exit(); // Exit process
                 } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
                     await delay(10000);
-                    GIFTED_MD_PAIR_CODE();
+                    QADEER_AI_PAIR_CODE();
                 }
             });
         } catch (err) {
-            console.log("service restated");
-            // Galti yahan bhi thi ('./temp/' + id)
-            await removeFile('./temp/' + id);
+            console.log("service restated", err);
+            // Error ki soorat mein bhi temp folder remove karein
+            await removeFile(sessionPath);
             if (!res.headersSent) {
                 await res.send({ code: "❗ Service Unavailable" });
             }
         }
     }
-    return await GIFTED_MD_PAIR_CODE();
+    return await QADEER_AI_PAIR_CODE();
 });
 
 module.exports = router;
