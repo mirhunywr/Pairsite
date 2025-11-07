@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
             if (!sock.authState.creds.registered) {
                 await delay(1500);
                 num = num.replace(/[^0-9]/g, '');
-                const code = await sock.requestPairingCode(num, "QADEERXMD");
+                const code = await sock.requestPairingCode(num, "QADEERAI");
                 if (!res.headersSent) {
                     await res.send({ code });
                 }
